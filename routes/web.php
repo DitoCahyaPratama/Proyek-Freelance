@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\User\RegisterController;
+use App\Http\Controllers\User\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::prefix('user')->group(function () {
+    Route::post('register', RegisterController::class);
+    Route::post('login', LoginController::class);
+});
+
+Route::prefix('job')->group(function () {
+    Route::post('create', 'App\Http\Controllers\Job\CreateController');
+    Route::get('get/all', 'App\Http\Controllers\Job\GetAllController');
+    Route::get('get/all/{id}', 'App\Http\Controllers\Job\GetAllByIdController');
+    Route::delete('delete/{id}','App\Http\Controllers\Job\DeleteController');
+    Route::post('update/{id}', 'App\Http\Controllers\Job\UpdateController');
+});
+   
+

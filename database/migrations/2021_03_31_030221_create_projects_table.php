@@ -20,7 +20,7 @@ class CreateProjectsTable extends Migration
             $table->text('description');
             $table->integer('dateline');
             $table->integer('salary');
-            $table->string('avatar');
+            $table->string('avatar')->nullable();
             $table->boolean('status');
             $table->date('date_publish');
             $table->date('date_expired');

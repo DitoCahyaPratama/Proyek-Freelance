@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('name');
             $table->text('description');
-            $table->string('avatar');
+            $table->string('avatar')->nullable();
             $table->integer('role');
             $table->timestamps();
         });
