@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Job;
+namespace App\Http\Controllers\Project;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Job;
+use App\Models\Project;
 use App\Models\User;
 
 class UpdateController extends Controller
@@ -15,13 +15,18 @@ class UpdateController extends Controller
             'id_user' => 'required',
             'name' => 'required',
             'description' => 'required',
-            'date_publish' => 'required',
+            'dateline' => 'required',
+            'salary' => 'required',
+            'date_publish'=>'required',
             'date_expired' => 'required',
         ]);
         $data=[
             'id_user'=>$request->input('id_user'),
             'name'=>$request->input('name'),
             'description'=>$request->input('description'),
+            'dateline'=>$request->input('dateline'),
+            'salary'=>$request->input('salary'),
+            'status'=>0,
             'date_publish'=>$request->input('date_publish'),
             'date_expired'=>$request->input('date_expired'),
         ];
@@ -30,7 +35,7 @@ class UpdateController extends Controller
                 'message'=>'sorry user not found'
             ]);
         }
-        Job::find($id)->update($data);
+        Project::find($id)->update($data);
         return "success";
     }
 }

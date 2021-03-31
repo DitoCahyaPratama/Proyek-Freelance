@@ -29,7 +29,15 @@ Route::prefix('job')->group(function () {
     Route::get('get/all', 'App\Http\Controllers\Job\GetAllController');
     Route::get('get/all/{id}', 'App\Http\Controllers\Job\GetAllByIdController');
     Route::delete('delete/{id}','App\Http\Controllers\Job\DeleteController');
-    Route::post('update/{id}', 'App\Http\Controllers\Job\UpdateController');
+    Route::put('update/{id}', 'App\Http\Controllers\Job\UpdateController');
+});
+
+Route::prefix('project')->group(function () {
+    Route::post('create', 'App\Http\Controllers\Project\CreateController');
+    Route::get('get/all', 'App\Http\Controllers\Project\GetAllController');
+    Route::get('get/all/{id}', 'App\Http\Controllers\Project\GetAllByIdController');
+    Route::delete('delete/{id}','App\Http\Controllers\Project\DeleteController');
+    Route::put('update/{id}','App\Http\Controllers\Project\UpdateController');
 });
    
 
