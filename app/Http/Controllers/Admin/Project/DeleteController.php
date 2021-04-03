@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Project;
+namespace App\Http\Controllers\Admin\Project;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -11,6 +11,7 @@ class DeleteController extends Controller
     public function __invoke($id)
     {
         Project::find($id)->delete();
-        return "success";
+        return redirect()->route('admin.project.getAll')
+        ->with('success', 'Projek Berhasil dihapus');
     }
 }

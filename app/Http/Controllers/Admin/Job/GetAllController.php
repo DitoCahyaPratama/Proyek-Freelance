@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Job;
+namespace App\Http\Controllers\Admin\Job;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -10,7 +10,7 @@ class GetAllController extends Controller
 {
     public function __invoke()
     {
-        $job=Job::all();
-        return $job;
+        $job=Job::paginate(5);
+        return view('admin.pages.listJob',compact('job'));
     }
 }

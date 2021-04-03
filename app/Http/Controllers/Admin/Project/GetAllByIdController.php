@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Job;
+namespace App\Http\Controllers\Admin\Project;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Job;
+use App\Models\Project;
 
 class GetAllByIdController extends Controller
 {
     public function __invoke($id)
     {
-        $job=Job::find($id);
-        return $job;
+        $project=Project::find($id);
+        return $project;
     }
 }

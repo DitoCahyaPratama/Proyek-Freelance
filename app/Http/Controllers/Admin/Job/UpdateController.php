@@ -1,33 +1,28 @@
 <?php
 
-namespace App\Http\Controllers\Project;
+namespace App\Http\Controllers\Admin\Job;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Project;
+use App\Models\Job;
 use App\Models\User;
-use Carbon\carbon;
 
-class CreateController extends Controller
+class UpdateController extends Controller
 {
-    public function __invoke(Request $request)
+    public function __invoke(Request $request,$id)
     {
         $request->validate([
             'id_user' => 'required',
             'name' => 'required',
             'description' => 'required',
-            'dateline' => 'required',
-            'salary' => 'required',
+            'date_publish' => 'required',
             'date_expired' => 'required',
         ]);
         $data=[
             'id_user'=>$request->input('id_user'),
             'name'=>$request->input('name'),
             'description'=>$request->input('description'),
-            'dateline'=>$request->input('dateline'),
-            'salary'=>$request->input('salary'),
-            'status'=>0,
-            'date_publish'=>Carbon::now(),
+            'date_publish'=>$request->input('date_publish'),
             'date_expired'=>$request->input('date_expired'),
         ];
         if (!$user = User::find($data['id_user'])) {
@@ -35,7 +30,7 @@ class CreateController extends Controller
                 'message'=>'sorry user not found'
             ]);
         }
-        Project::create($data);
+        Job::find($id)->update($data);
         return "success";
     }
 }
