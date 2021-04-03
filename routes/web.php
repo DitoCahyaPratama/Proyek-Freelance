@@ -19,11 +19,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('user')->group(function () {
-    Route::post('register', RegisterController::class);
-    Route::post('login', LoginController::class);
-});
-
 Route::prefix('job')->group(function () {
     Route::post('create', 'App\Http\Controllers\Job\CreateController');
     Route::get('get/all', 'App\Http\Controllers\Job\GetAllController');
@@ -41,3 +36,20 @@ Route::prefix('project')->group(function () {
 });
    
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/roles', [App\Http\Controllers\PermissionController::class, 'Permission']);
+
+Route::group(['middleware' => 'role:developer'], function() {
+
+    Route::get('/admin', function() {
+ 
+       return 'Welcome Admin';
+       
+    });
+ 
+ });
+ 
