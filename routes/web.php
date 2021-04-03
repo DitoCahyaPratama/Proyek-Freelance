@@ -15,9 +15,12 @@ use App\Http\Controllers\User\LoginController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [App\Http\Controllers\User\HomeController::class, 'index']);
+Route::get('/kerja', [App\Http\Controllers\User\KerjaController::class, 'index']);
+Route::get('/proyek', [App\Http\Controllers\User\ProyekController::class, 'index']);
+Route::get('/tentang', [App\Http\Controllers\User\TentangController::class, 'index']);
+Route::get('/kontak', [App\Http\Controllers\User\KontakController::class, 'index']);
+
 
 Route::prefix('job')->group(function () {
     Route::post('create', 'App\Http\Controllers\Job\CreateController');
