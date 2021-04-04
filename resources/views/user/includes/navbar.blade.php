@@ -70,7 +70,7 @@
                 </li>
                 @endguest
 
-                @role('pKaryawan')
+                {{-- @role('pKaryawan')
                     <li class="nav-item">
                         <a class="nav-link" href="<?php route('/projeksaya'); ?>">
                             Projek Saya
@@ -81,9 +81,9 @@
                             Profil Saya
                         </a>
                     </li>
-                @endrole
+                @endrole --}}
 
-                @role('pKerja')
+                {{-- @role('pKerja')
                     <li class="nav-item">
                         <a class="nav-link" href="/jobsaya">
                             Kerja
@@ -99,7 +99,7 @@
                             Profil Saya
                         </a>
                     </li>
-                @endrole
+                @endrole --}}
 
             </ul>
 

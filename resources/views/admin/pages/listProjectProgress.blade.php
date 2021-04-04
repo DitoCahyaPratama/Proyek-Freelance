@@ -35,8 +35,8 @@
                 <tr>
                     <th>#</th>
                     <th>Nama Projek</th>
-                    <th>Nama User</th>
-                    <th>date Claim</th>
+                    <th>Dikerjakan Oleh</th>
+                    <th>Tanggal Claim</th>
                     <th>Aksi</th>
                 </tr>
             </thead>

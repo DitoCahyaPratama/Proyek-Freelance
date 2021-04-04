@@ -10,7 +10,7 @@ class GetAllController extends Controller
 {
     public function __invoke()
     {
-        $job=Job::paginate(5);
+        $job=Job::select('jobs.*','users.name as nameUser')->join('users','users.id','=','jobs.id')->paginate(5);
         return view('admin.pages.listJob',compact('job'));
     }
 }

@@ -34,10 +34,11 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Name</th>
-                    <th>description</th>
-                    <th>date publish</th>
-                    <th>date expired</th>
+                    <th>Dimiliki Oleh</th>
+                    <th>Nama Pekerjaan</th>
+                    <th>Deskripsi</th>
+                    <th>Tanggal Rilis</th>
+                    <th>Tanggal Kadaluarsa</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -46,6 +47,7 @@
                 @foreach($job as $jobs)
                 <tr>
                     <td>{{ $no++}}</td>
+                    <td>{{$jobs->nameUser}}</td>
                     <td>{{$jobs->name}}</td>
                     <td>{{$jobs->description}}</td>
                     <td>{{$jobs->date_publish}}</td>

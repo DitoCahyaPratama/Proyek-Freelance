@@ -34,14 +34,13 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Name</th>
-                    <th>description</th>
+                    <th>Nama Projek</th>
+                    <th>deskripsi</th>
                     <th>dateline</th>
-                    <th>salary</th>
-                    <th>avatar</th>
+                    <th>Gaji</th>
                     <th>status</th>
-                    <th>date publish</th>
-                    <th>date expired</th>
+                    <th>Tanggal publish</th>
+                    <th>Tanggal Kedaluarsa</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -54,7 +53,6 @@
                     <td>{{$projects->description}}</td>
                     <td>{{$projects->dateline}}</td>
                     <td>{{$projects->salary}}</td>
-                    <td>{{$projects->avatar}}</td>
                     <td>{{$projects->status}}</td>
                     <td>{{$projects->date_publish}}</td>
                     <td>{{$projects->date_expired}}</td>

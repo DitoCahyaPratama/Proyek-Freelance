@@ -44,11 +44,14 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 //Admin
-Route::get('/admin', function () {
-    return view('admin.layouts.admin');
-});
+// Route::get('/admin', function () {
+//     return view('admin.layouts.admin');
+// });
 
 Route::prefix('/admin')->group(function () {
+    Route::prefix('/dashboard')->group(function () {
+        Route::get('get/all', 'App\Http\Controllers\Admin\Dashboard\GetCountController');
+    });
     Route::prefix('/user')->group(function () {
         Route::get('get/all', 'App\Http\Controllers\Admin\User\GetAllController');
     });
