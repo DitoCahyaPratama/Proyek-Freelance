@@ -17,4 +17,11 @@ class ProjectClaim extends Model
         'status'
     ];
     public $timestamps=FALSE;
+
+    public function user() {
+        return $this->belongsTo('App\Models\User','id_user','id');
+    }
+    public function project() {
+        return $this->belongsTo('App\Models\Project','id_project','id');
+    }
 }

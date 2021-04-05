@@ -13,14 +13,6 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    @role('developer')
-                        {{ __('saya developer') }}
-                    @endrole
-
-                    @role('manager')
-                        {{ __('saya manager') }}
-                    @endrole
                     
                     {{ __('You are logged in!') }}
                 </div>
