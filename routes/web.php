@@ -47,12 +47,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/roles', [App\Http\Controllers\PermissionController::class, 'Permission']);
 
 Route::group(['middleware' => 'role:developer'], function() {
-
     Route::get('/admin', function() {
- 
        return 'Welcome Admin';
-       
-    });
- 
- });
+    }); 
+});
  
