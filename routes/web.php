@@ -29,16 +29,23 @@ Auth::routes();
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => 'role:pKaryawan'], function() {
-    Route::get('/jobsaya', [App\Http\Controllers\User\KerjaController::class, 'myjob']);
+    Route::prefix('/jobsaya')->group(function () {
+        Route::get('/', [App\Http\Controllers\User\KerjaController::class, 'myjob']);
+        Route::post('create', 'App\Http\Controllers\Admin\Job\CreateController');
+        Route::get('get/all', 'App\Http\Controllers\Admin\Job\GetAllController')->name('admin.job.getAll');
+        Route::get('get/all/{id}', 'App\Http\Controllers\Admin\Job\GetAllByIdController');
+        Route::delete('delete/{id}','App\Http\Controllers\Admin\Job\DeleteController');
+        Route::put('update/{id}', 'App\Http\Controllers\Admin\Job\UpdateController');
+    });
     Route::get('/projeksaya', [App\Http\Controllers\User\ProyekController::class, 'myproyek']);
     Route::get('/profile-client', [App\Http\Controllers\User\ProfileController::class, 'client']);
-    
+
 });
 
 Route::group(['middleware' => 'role:pKerja'], function() {
     Route::get('/projek-saya', [App\Http\Controllers\User\ProyekController::class, 'myproyek']);
     Route::get('/profile-freelance', [App\Http\Controllers\User\ProfileController::class, 'freelance']);
-    
+
 });
 
 Route::group(['middleware' => 'role:admin'], function() {
@@ -60,7 +67,7 @@ Route::group(['middleware' => 'role:admin'], function() {
             Route::get('get/all/{id}', 'App\Http\Controllers\Admin\Job\GetAllByIdController');
             Route::delete('delete/{id}','App\Http\Controllers\Admin\Job\DeleteController');
             Route::put('update/{id}', 'App\Http\Controllers\Admin\Job\UpdateController');
-        });    
+        });
         Route::prefix('/project')->group(function () {
             Route::post('create', 'App\Http\Controllers\Admin\Project\CreateController');
             Route::get('get/all', 'App\Http\Controllers\Admin\Project\GetAllController')->name('admin.project.getAll');
