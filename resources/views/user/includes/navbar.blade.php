@@ -57,7 +57,6 @@
                     </div>
                 </li>
 
-                @guest
                 <li class="nav-item">
                     <a class="nav-link" href="/tentang">
                         Tentang Kami
@@ -68,22 +67,21 @@
                         Kontak
                     </a>
                 </li>
-                @endguest
 
-                {{-- @role('pKaryawan')
+                @role('pKerja')
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php route('/projeksaya'); ?>">
+                        <a class="nav-link" href="/projek-saya">
                             Projek Saya
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php route('/profil'); ?>">
+                        <a class="nav-link" href="/profile-freelance">
                             Profil Saya
                         </a>
                     </li>
-                @endrole --}}
+                @endrole
 
-                {{-- @role('pKerja')
+                @role('pKaryawan')
                     <li class="nav-item">
                         <a class="nav-link" href="/jobsaya">
                             Kerja
@@ -95,18 +93,24 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/profil">
+                        <a class="nav-link" href="/profile-client">
                             Profil Saya
                         </a>
                     </li>
-                @endrole --}}
+                @endrole
 
             </ul>
 
             @auth
-                <a class="navbar-btn btn btn-sm btn-outline-danger lift ml-2" href="{{ route('logout') }}">
-                    Keluar
+                <a class="navbar-btn btn btn-sm btn-outline-danger lift ml-2" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
                 </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
             @endauth
             
             @guest

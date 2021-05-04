@@ -98,14 +98,20 @@
                     </p>
 
                     <!-- Form -->
-                    <form class="mb-6 row" action="../backend/user/register.php" method="POST" enctype="multipart/form-data">
+                    <form class="mb-6 row" method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+                        @csrf
                         <div class="col-md-6 col-sm-12">
                             <!-- Photo -->
                             <div class="form-group">
-                                <label for="avatar">
+                                <label for="photo_profile">
                                     Foto anda
                                 </label>
-                                <input type="file" class="form-control" id="avatar" name="avatar" required>
+                                <input type="file" class="form-control" id="photo_profile" name="photo_profile">
+                                @error('photo_profile')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
     
                             <!-- Email -->
@@ -114,6 +120,11 @@
                                     Alamat Email
                                 </label>
                                 <input type="email" class="form-control" id="email" name="email" placeholder="namaemail@contoh.com" required>
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
     
                             <!-- Username -->
@@ -122,6 +133,11 @@
                                     Username
                                 </label>
                                 <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan username anda" required>
+                                @error('username')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
     
                             <!-- Password -->
@@ -130,6 +146,11 @@
                                     Password
                                 </label>
                                 <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
     
@@ -140,6 +161,11 @@
                                     Nama Anda
                                 </label>
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Masukkan nama anda" required>
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
     
                             <!-- Description -->
@@ -148,6 +174,11 @@
                                     Deskripsi
                                 </label>
                                 <textarea class="form-control" name="description" id="" cols="30" rows="1" required></textarea>
+                                @error('description')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
     
                             <!-- Role -->
@@ -156,9 +187,14 @@
                                     Daftar sebagai
                                 </label>
                                 <select class="form-control" name="role">
-                                    <option value="2">1. Pencari Freelance</option>
-                                    <option value="3">2. Freelance</option>
+                                    <option value="pKaryawan">1. Pencari Freelance</option>
+                                    <option value="pKerja">2. Freelance</option>
                                 </select>
+                                @error('role')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
     

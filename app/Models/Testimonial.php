@@ -8,11 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Testimonial extends Model
 {
     use HasFactory;
-    
+
     protected $table = "testimonials";
     protected $fillable = [
-        'id_user',        
-        'description',    
+        'id_user',
+        'description',
     ];
     public $timestamps=FALSE;
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user', 'id');
+    }
 }

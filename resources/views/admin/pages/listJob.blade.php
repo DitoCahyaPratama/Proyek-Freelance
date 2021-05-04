@@ -27,7 +27,7 @@
 @endif
 <div class="panel panel-headline">
     <div class="panel-heading">
-        <h3 class="panel-title">List Pekerjaan</h3>    
+        <h3 class="panel-title">List Pekerjaan</h3>
     </div>
     <div class="panel-body">
         <table class="table table-bordered">
@@ -74,7 +74,7 @@
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
-  
+
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
@@ -89,7 +89,7 @@
                   </div>
                   <div class="form-group">
                     <label for="pwd">Deskripsi</label>
-                    <input type="text" class="form-control" id="pwd" name="description">
+                    <textarea class="form-control" name="description"></textarea>
                   </div>
                   <div class="form-group">
                     <label for="email">Tanggal Expired</label>
@@ -102,7 +102,7 @@
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
-  
+
     </div>
   </div>
 @endsection
