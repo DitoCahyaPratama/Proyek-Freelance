@@ -131,7 +131,7 @@
                             <form class="p-4 row">
                                 <div class="col-md-12 col-sm-12 text-center mb-5">
                                     <div class="avatar avatar-xxl">
-                                        <img src="../backend/public/img/" alt="..."
+                                        <img src="{{ asset('user/img/covers/cover-12.jpg') }}" alt="..."
                                              class="avatar-img rounded-circle">
                                     </div>
                                 </div>

@@ -33,7 +33,7 @@
                 <div class="col-12">
 
                     <!-- Form -->
-                    <form class="rounded shadow" action="/carikerja" method="POST">
+                    <form class="rounded shadow" action="/carikerjaquery" method="GET">
                         <div class="input-group input-group-lg">
 
                             <!-- Prepend -->
@@ -44,7 +44,7 @@
                             </div>
 
                             <!-- Input -->
-                            <input type="text" name="keyword" class="form-control border-0 px-1"
+                            <input type="text" name="inputSearch" class="form-control border-0 px-1"
                                    aria-label="Cari kerjaan ..." placeholder="Cari kerjaan...">
 
                             <!-- Append -->
@@ -131,11 +131,11 @@
                                     <!-- Divider -->
                                     <hr class="card-meta-divider">
 
-                                    <!-- Avatar -->
+                                    {{-- <!-- Avatar -->
                                     <div class="avatar avatar-sm mr-2">
                                         <img src="../backend/public/img/{{ $datas['avatarAuthor'] }}" alt="..."
                                              class="avatar-img rounded-circle">
-                                    </div>
+                                    </div> --}}
 
                                     <!-- Author -->
                                     <h6 class="text-uppercase text-muted mr-2 mb-0">

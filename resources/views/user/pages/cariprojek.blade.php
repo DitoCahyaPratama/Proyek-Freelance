@@ -33,7 +33,7 @@
             <div class="col-12">
       
               <!-- Form -->
-              <form class="rounded shadow" action="/cariprojek" method="POST">
+              <form class="rounded shadow" action="/cariprojekquery" method="GET">
                 <div class="input-group input-group-lg">
       
                   <!-- Prepend -->
@@ -44,7 +44,7 @@
                   </div>
       
                   <!-- Input -->
-                  <input type="text" name="keyword" class="form-control border-0 px-1" aria-label="Cari projek..." placeholder="Cari projek...">
+                  <input type="text" name="inputSearch" class="form-control border-0 px-1" aria-label="Cari projek..." placeholder="Cari projek...">
       
                   <!-- Append -->
                   <div class="input-group-append">
@@ -99,7 +99,7 @@
                     <a class="card-img-top" href="#!">
       
                       <!-- Image -->
-                      <img src="../backend/public/img/<?= $datas['avatar'] ?>" alt="..." class="card-img-top">
+                      <img src="{{ asset('user/img/covers/cover-12.jpg') }}" alt="..." class="card-img-top">
       
                       <!-- Shape -->
                       <div class="position-relative">

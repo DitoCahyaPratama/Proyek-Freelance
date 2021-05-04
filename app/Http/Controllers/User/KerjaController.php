@@ -17,9 +17,16 @@ class KerjaController extends Controller
         return view('user.pages.kerja', compact('job'));
     }
 
-    public function search()
+    public function searchView()
     {
         $job = Job::orderBy('id', 'DESC')->limit(6)->get();
+        return view('user.pages.carikerja', compact('job'));
+    }
+
+    public function search(Request $request)
+    {   
+        $inputSearch = $request->input('inputSearch');
+        $job = Job::orderBy('id', 'DESC')->where('name','like',"%".$inputSearch."%")->get();
         return view('user.pages.carikerja', compact('job'));
     }
 
@@ -27,7 +34,7 @@ class KerjaController extends Controller
     {
         $job = Job::with('user')->where('id_user', Auth::id())->paginate(6);
         return view('user.pages.myjob', compact('job'));
-    }
+    }    
 
     public function store(Request $request)
     {

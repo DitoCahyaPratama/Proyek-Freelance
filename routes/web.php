@@ -22,8 +22,10 @@ Route::get('/proyek', [App\Http\Controllers\User\ProyekController::class, 'index
 Route::get('/tentang', [App\Http\Controllers\User\TentangController::class, 'index']);
 Route::get('/kontak', [App\Http\Controllers\User\KontakController::class, 'index']);
 
-Route::get('/carikerja', [App\Http\Controllers\User\KerjaController::class, 'search']);
-Route::get('/cariprojek', [App\Http\Controllers\User\ProyekController::class, 'search']);
+Route::get('/carikerja', [App\Http\Controllers\User\KerjaController::class, 'searchView']);
+Route::get('/carikerjaquery', [App\Http\Controllers\User\KerjaController::class, 'search']);
+Route::get('/cariprojek', [App\Http\Controllers\User\ProyekController::class, 'searchView']);
+Route::get('/cariprojekquery', [App\Http\Controllers\User\ProyekController::class, 'search']);
 
 
 Auth::routes();
