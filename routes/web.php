@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\RegisterController;
 use App\Http\Controllers\User\LoginController;
+use App\Http\Controllers\User\KerjaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,22 +31,19 @@ Auth::routes();
 
 Route::group(['middleware' => 'role:pKaryawan'], function() {
     Route::prefix('/jobsaya')->group(function () {
-        Route::get('/', [App\Http\Controllers\User\KerjaController::class, 'myjob']);
-        Route::post('create', 'App\Http\Controllers\Admin\Job\CreateController');
-        Route::get('get/all', 'App\Http\Controllers\Admin\Job\GetAllController')->name('admin.job.getAll');
-        Route::get('get/all/{id}', 'App\Http\Controllers\Admin\Job\GetAllByIdController');
-        Route::delete('delete/{id}','App\Http\Controllers\Admin\Job\DeleteController');
-        Route::put('update/{id}', 'App\Http\Controllers\Admin\Job\UpdateController');
+        Route::get('/', [KerjaController::class, 'myjob'])->name('user.jobsaya');
+        Route::post('/store', [KerjaController::class, 'store']);
+        Route::get('/get/{id}', [KerjaController::class, 'getById']);
+        Route::delete('/delete/{id}',[KerjaController::class, 'delete']);
+        Route::put('/update/{id}', [KerjaController::class, 'update']);
     });
     Route::get('/projeksaya', [App\Http\Controllers\User\ProyekController::class, 'myproyek']);
     Route::get('/profile-client', [App\Http\Controllers\User\ProfileController::class, 'client']);
-
 });
 
 Route::group(['middleware' => 'role:pKerja'], function() {
     Route::get('/projek-saya', [App\Http\Controllers\User\ProyekController::class, 'myproyek']);
     Route::get('/profile-freelance', [App\Http\Controllers\User\ProfileController::class, 'freelance']);
-
 });
 
 Route::group(['middleware' => 'role:admin'], function() {

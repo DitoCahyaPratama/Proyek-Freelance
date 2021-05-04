@@ -25,17 +25,21 @@
         </div> <!-- / .container -->
     </nav>
 
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <p><strong>Berhasil!, </strong>{{ $message }}</p>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
+
     <!-- SEARCH
         ================================================== -->
     <section class="py-6">
         <div class="container">
             <button class="btn btn-primary btn-sm mt-5" data-toggle="modal" data-target="#modalAdd">Tambah Pekerjaan
             </button>
-            <?php
-            if (isset($_SESSION['msgNotif'])) {
-                showMessage($_SESSION['msgNotif']);
-            }
-            ?>
         </div>
     </section>
 
@@ -44,85 +48,77 @@
     <section>
         <div class="container">
             <div class="row">
-                <?php
-                if(!empty($data)){
-                foreach ($data as $datas) {
-                # code...
-                ?>
-                <div class="col-12 col-md-6 col-lg-4 d-flex">
-                    <!-- Card -->
-                    <div class="card mb-6 shadow-light-lg lift lift-lg">
+                @if(!empty($job))
+                    @foreach ($job as $datas)
+                        <div class="col-12 col-md-6 col-lg-4 d-flex">
+                            <div class="card mb-6 shadow-light-lg lift lift-lg">
 
-                        <!-- Image -->
-                        <a class="card-img-top" href="#!">
+                                <!-- Image -->
+                                <a class="card-img-top" href="#!">
 
-                            <!-- Image -->
-                            <img src="assets/img/covers/cover-12.jpg" alt="..." class="card-img-top">
+                                    <!-- Image -->
+                                    <img src="{{asset('user/img/covers/cover-12.jpg')}}" alt="..." class="card-img-top">
 
-                            <!-- Shape -->
-                            <div class="position-relative">
-                                <div class="shape shape-bottom shape-fluid-x svg-shim text-white">
-                                    <svg viewBox="0 0 2880 480" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                              d="M2160 0C1440 240 720 240 720 240H0v240h2880V0h-720z"
-                                              fill="currentColor"/>
-                                    </svg>
-                                </div>
+                                    <!-- Shape -->
+                                    <div class="position-relative">
+                                        <div class="shape shape-bottom shape-fluid-x svg-shim text-white">
+                                            <svg viewBox="0 0 2880 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                      d="M2160 0C1440 240 720 240 720 240H0v240h2880V0h-720z"
+                                                      fill="currentColor"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+
+                                </a>
+
+                                <!-- Body -->
+                                <a class="card-body" href="#!">
+
+                                    <!-- Heading -->
+                                    <h3>
+                                        {{ $datas['name'] }}
+                                    </h3>
+
+                                    <!-- Text -->
+                                    <p class="mb-0 text-muted">
+                                        {{ $datas['description'] }}
+                                    </p>
+
+                                </a>
+
+                                <!-- Meta -->
+                                <a class="card-meta mt-auto" href="#!">
+
+                                    <!-- Divider -->
+                                    <hr class="card-meta-divider">
+
+                                    <!-- Avatar -->
+                                    <div class="avatar avatar-sm mr-2">
+                                        <img src="../backend/public/img/<?= $datas['avatarUser'] ?>" alt="..."
+                                             class="avatar-img rounded-circle">
+                                    </div>
+
+                                    <!-- Author -->
+                                    <h6 class="text-uppercase text-muted mr-2 mb-0">
+                                        <?= $datas['nameUser'] ?>
+                                    </h6>
+
+                                    <!-- Date -->
+                                    <p class="h6 text-uppercase text-muted mb-0 ml-auto">
+                                        <time><?= $datas['date_publish'] ?> - <?= $datas['date_expired'] ?></time>
+                                    </p>
+
+                                </a>
+
                             </div>
-
-                        </a>
-
-                        <!-- Body -->
-                        <a class="card-body" href="#!">
-
-                            <!-- Heading -->
-                            <h3>
-                                <?= $datas['name'] ?>
-                            </h3>
-
-                            <!-- Text -->
-                            <p class="mb-0 text-muted">
-                                <?= $datas['description'] ?>
-                            </p>
-
-                        </a>
-
-                        <!-- Meta -->
-                        <a class="card-meta mt-auto" href="#!">
-
-                            <!-- Divider -->
-                            <hr class="card-meta-divider">
-
-                            <!-- Avatar -->
-                            <div class="avatar avatar-sm mr-2">
-                                <img src="../backend/public/img/<?= $datas['avatarUser'] ?>" alt="..."
-                                     class="avatar-img rounded-circle">
-                            </div>
-
-                            <!-- Author -->
-                            <h6 class="text-uppercase text-muted mr-2 mb-0">
-                                <?= $datas['nameUser'] ?>
-                            </h6>
-
-                            <!-- Date -->
-                            <p class="h6 text-uppercase text-muted mb-0 ml-auto">
-                                <time><?= $datas['date_publish'] ?> - <?= $datas['date_expired'] ?></time>
-                            </p>
-
-                        </a>
-
+                        </div>
+                    @endforeach
+                @else
+                    <div class="col-12 text-center">
+                        <p>Pekerjaan tidak ada</p>
                     </div>
-                </div>
-                <?php
-                }
-                }else{
-                ?>
-                <div class="col-12 text-center">
-                    <p>Pekerjaan tidak ada</p>
-                </div>
-                <?php
-                }
-                ?>
+                @endif
             </div> <!-- / .row -->
         </div> <!-- / .container -->
     </section>
@@ -165,7 +161,7 @@
                     </p>
 
                     <!-- Form -->
-                    <form action="/jobsaya/create" method="POST">
+                    <form action="/jobsaya/store" method="POST">
                         @csrf
                         <div class="row">
                             <div class="col-12 col-md-6">

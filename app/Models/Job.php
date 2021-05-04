@@ -11,10 +11,15 @@ class Job extends Model
     protected $table = "jobs";
     protected $fillable = [
         'id_user',
-        'name',        
-        'description',    
-        'date_publish',    
-        'date_expired',    
+        'name',
+        'description',
+        'date_publish',
+        'date_expired',
     ];
     public $timestamps=FALSE;
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user', 'id');
+    }
 }
