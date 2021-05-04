@@ -22,9 +22,10 @@
                 </tr>
             </thead>
             <tbody>
+                @php $no=1; @endphp
                 @foreach($user as $users)
                 <tr>
-                    <td>1</td>
+                    <td>{{$no++}}</td>
                     <td>{{$users->name}}</td>
                     <td>{{$users->email}}</td>
                     <td>{{$users->created_at}}</td>
