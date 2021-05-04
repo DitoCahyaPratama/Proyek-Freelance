@@ -25,8 +25,8 @@ class KerjaController extends Controller
 
     public function myjob()
     {
-//        $job = Job::with()->->paginate(6);
-//        return view('user.pages.myjob', compact('job'));
+        $job = Job::with('user')->where('id_user', Auth::id())->paginate(6);
+        return view('user.pages.myjob', compact('job'));
     }
 
     public function store(Request $request)

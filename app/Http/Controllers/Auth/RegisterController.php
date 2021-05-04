@@ -29,8 +29,8 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
-
+//    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/login';
     /**
      * Create a new controller instance.
      *
@@ -67,9 +67,13 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        if($data['photo_profile']){
+            $image_name = $data['photo_profile']->store('images/photo_profile', 'public');
+        }
         return User::create([
             'username' => $data['username'],
             'name' => $data['name'],
+            'photo_profile' => $image_name,
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'role' => $data['role'],
